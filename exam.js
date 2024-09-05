@@ -274,7 +274,83 @@ let militaryUnit = {
   
   
 function Mission1(militaryUnit) {
-    return  `Chief of staff name: ${militaryUnit.commandStructure.chiefOfStaff.name}`
+    return  `Chief of staff name: ${militaryUnit.commandStructure.chiefOfStaff.name}
+     rank: ${militaryUnit.commandStructure.chiefOfStaff.rank}
+     phone:${militaryUnit.commandStructure.chiefOfStaff.contact.phone}`
 }
-console.log(Mission1(militaryUnit));
+//console.log(Mission1(militaryUnit));
 
+function Mission2(militaryUnit){
+  let count = 0;
+  for (let index = 0; index < militaryUnit.personnel.length; index++) {   
+    count++
+  }
+  return count
+}
+//console.log(Mission2(militaryUnit));
+
+function Mission3(NewDeployment, militaryUnit)
+{
+    const deploymentToHistory = {
+        eventDate: militaryUnit.currentDeployment.startDate,
+        eventDescription: militaryUnit.currentDeployment.mission
+    }
+    militaryUnit.history.push(deploymentToHistory);
+
+    militaryUnit.currentDeployment.location = NewDeployment.location;
+    militaryUnit.currentDeployment.mission = NewDeployment.mission;
+    militaryUnit.currentDeployment.startDate = NewDeployment.startDate;
+    militaryUnit.currentDeployment.estimatedEndDate = NewDeployment.estimatedEndDate;
+    return militaryUnit;
+}
+const newDeployment = {     
+  location: "Suoth",
+  mission: "Kill-militery",
+  startDate: "2025-08-01",
+  estimatedEndDate: "2026-12-31",
+}
+
+console.log(Mission3(newDeployment, militaryUnit));
+ 
+function Mission4(firearms1) {
+  for (let index = 0; index < militaryUnit.equipment.firearms.length; index++) {
+  if (militaryUnit.equipment.firearms[index].type  === firearms1.type 
+    && militaryUnit.equipment.firearms[index].status === firearms1.status)
+    {  
+      militaryUnit.equipment.firearms[index].quantity++ 
+      return militaryUnit
+    }
+  } 
+  let newfirearms = Object.create(militaryUnit.equipment.firearms[0]);
+  newfirearms.type = firearms1.type
+  newfirearms.status = firearms1.status
+  newfirearms.quantity = firearms1.quantity
+  console.log(newfirearms);
+  militaryUnit.equipment.firearms[militaryUnit.equipment.firearms.length] = newfirearms  
+  return militaryUnit
+}
+
+
+ let a ={
+  
+  type: "M17 Rifle",
+
+  quantity: 500,
+
+  status: "Operational",
+
+}
+
+
+
+//console.log(Mission4(a));
+//console.log(militaryUnit);
+
+function Mission5(militaryUnit){
+   sum = 0
+   for (let index = 0; index < militaryUnit.trainingPrograms.length; index++) {
+      sum += militaryUnit.trainingPrograms[index].duration   
+   }  
+   return sum
+}
+//console.log(Mission5(militaryUnit));
