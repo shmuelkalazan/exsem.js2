@@ -310,7 +310,6 @@ const newDeployment = {
   estimatedEndDate: "2026-12-31",
 }
 
-
 console.log(Mission3(newDeployment, militaryUnit));
  
 function Mission4(firearms1) {
@@ -341,7 +340,6 @@ function Mission4(firearms1) {
   status: "Operational",
 
 }
-
 
 
 //console.log(Mission4(a));
